@@ -1,0 +1,94 @@
+//widesScreen
+
+@include mediaXl {
+  .projects {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+//Desktop && Laptops
+
+@include mediaLg {
+  .projects {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+//tablet && small Laptops
+
+@include mediaMd {
+  main {
+    align-items: center;
+    text-align: center;
+
+    .heading-lg {
+      line-height: 1;
+      margin-bottom: 1rem;
+    }
+  }
+  ul.menu-nav,
+  div.menu-branding {
+    float: none;
+    width: 100%;
+    min-height: 0;
+
+    &.show {
+      transform: translate3d(0, 0, 0);
+    }
+  }
+  .menu-nav {
+    height: 100vh;
+    transform: translate3d(-100%, 0, 0);
+    font: size 24px;
+  }
+
+  // .menu-branding {
+  //   height: 25vh;
+  //   transform: translate3d(100%, 0, 0);
+
+  //   // .portrait {
+  //   //   height: 150px;
+  //   //   width: 150px;
+  //   //   background: url('../img/portrait_small.jpg');
+  //   // }
+  // }
+
+  .about-info {
+    grid-template-areas:
+      'bioimage'
+      'bio'
+      'jop1'
+      'jop2'
+      'jop3';
+
+    grid-template-columns: 1fr;
+  }
+  .projects {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+//SmartPhone
+@include mediaSm {
+  main {
+    padding: 2rem;
+  }
+  main#home h1 {
+    margin-top: 10vh;
+  }
+
+  main#contact div {
+    font-size: 1.1rem;
+  }
+
+  main#contact h1 {
+    font-size: 5rem;
+  }
+  .heading-lg {
+    margin-top: 1rem;
+    font-size: 5rem;
+  }
+  .projects {
+    grid-template-columns: 1fr;
+  }
+}

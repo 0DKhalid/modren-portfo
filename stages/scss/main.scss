@@ -1,0 +1,186 @@
+@import 'config';
+@import 'menu';
+
+* {
+  box-sizing: border-box;
+}
+body {
+  @include background;
+  background: $primary-color;
+  color: set-text-color($primary-color);
+  height: 100%;
+  margin: 0;
+  font-family: 'Segoe UI', 'Tahoma', 'Geneva', 'Verdana', 'sans-serif';
+  line-height: 1.5;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  font-weight: 400;
+  &.heading-lg {
+    font-size: 6rem;
+  }
+  &.heading-sm {
+    margin-bottom: 2rem;
+    padding: 0.2rem 1rem;
+    background: rgba(lighten($primary-color, 2), 0.5);
+  }
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+header {
+  position: fixed;
+  z-index: 2;
+  width: 100%;
+}
+
+.text-secondary {
+  color: $secondary-color;
+}
+
+main {
+  padding: 4rem;
+  // height: 100%;
+  min-height: unquote('-webkit-calc(100vh - 60px)');
+
+  .icons {
+    margin-top: 1rem;
+
+    a {
+      padding: 0.4rem;
+
+      &:hover {
+        color: $secondary-color;
+        @include easeOut;
+      }
+    }
+  }
+  &#home {
+    overflow: hidden;
+    h1 {
+      margin-top: 20vh;
+    }
+  }
+}
+
+.about-info {
+  display: grid;
+  grid-template-areas:
+    'bio bio bio'
+    'jop1 jop2 jop3';
+  grid-template-columns: repeat(3, 1fr);
+
+  // .bio-image {
+  //   grid-area: bioimage;
+  //   margin: auto;
+  //   border-radius: 50%;
+  //   border: solid 3px $secondary-color;
+  // }
+  .bio {
+    grid-area: bio;
+    font-size: 1.5rem;
+  }
+  .jop-1 {
+    grid-area: jop1;
+  }
+  .jop-2 {
+    grid-area: jop2;
+  }
+  .jop-3 {
+    grid-area: jop3;
+  }
+
+  .jop {
+    background: lighten($primary-color, 5);
+    margin: 0.5rem;
+    padding: 0.5rem;
+    border-bottom: $secondary-color solid 3px;
+    p {
+    }
+  }
+}
+
+//work/project
+
+.projects {
+  display: grid;
+  grid-gap: 0.7rem;
+  grid-template-columns: repeat(3, 1fr);
+
+  img {
+    width: 100%;
+    border: solid 3px #fff;
+    &:hover {
+      opacity: 0.5;
+      border: solid 3px $secondary-color;
+      @include easeOut;
+    }
+  }
+}
+//Contact Style
+.boxes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 1rem;
+
+  div {
+    font-size: 2rem;
+    border: solid 3px #fff;
+    padding: 1.5rem 2.5rem;
+    margin-top: 3rem;
+    @include easeOut;
+
+    &:hover {
+      padding: 0.5rem 1.5rem;
+      background: $secondary-color;
+      color: set-text-color($secondary-color);
+
+      span {
+        color: set-text-color($secondary-color);
+      }
+    }
+  }
+}
+
+//Button Style
+
+.btn {
+  display: block;
+  padding: 0.5rem;
+  border: 0;
+  margin-bottom: 0.3rem;
+  &:hover {
+    background: $secondary-color;
+    color: set-text-color($secondary-color);
+  }
+}
+
+.dark-btn {
+  @extend .btn;
+  background: darken($primary-color, 50);
+  color: #fff;
+}
+
+.light-btn {
+  @extend .btn;
+  background: lighten($primary-color, 50);
+  color: #333;
+}
+
+#main-footer {
+  text-align: center;
+  padding: 1rem;
+  background: darken($primary-color, 10);
+  color: set-text-color($primary-color);
+  height: 60px;
+}
+
+@import 'mobile';
