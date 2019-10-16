@@ -7,7 +7,7 @@ const sass = require('gulp-sass');
 
 gulp.task('html', () => {
   return gulp
-    .src('stage/ejs/*.ejs')
+    .src('stages/ejs/*.ejs')
     .pipe(ejs())
     .pipe(rename({ extname: '.html' }))
     .pipe(gulp.dest('dist'));
@@ -15,14 +15,14 @@ gulp.task('html', () => {
 
 gulp.task('js', () => {
   return gulp
-    .src('stage/js/*.js')
+    .src('stages/js/*.js')
     .pipe(concat('main.js'))
     .pipe(gulp.dest('dist/js'));
 });
 
 gulp.task('css', () => {
   return gulp
-    .src('stage/scss/main.scss')
+    .src('stages/scss/main.scss')
     .pipe(sass({ outputStyle: 'compressed' }))
     .pipe(autoprefixer('last 2 version'))
     .pipe(concat('main.css'))
@@ -31,7 +31,7 @@ gulp.task('css', () => {
 
 gulp.task('watch', () => {
   require('./server');
-  gulp.watch('stage/ejs/**/*.ejs', ['html']);
-  gulp.watch('stage/js/*.js', ['js']);
-  gulp.watch('stage/scss/*.scss', ['css']);
+  gulp.watch('stages/ejs/**/*.ejs', ['html']);
+  gulp.watch('stages/js/*.js', ['js']);
+  gulp.watch('stages/scss/*.scss', ['css']);
 });
