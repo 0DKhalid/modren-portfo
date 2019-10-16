@@ -4,6 +4,7 @@ const autoprefixer = require('gulp-autoprefixer');
 const ejs = require('gulp-ejs');
 const rename = require('gulp-rename');
 const sass = require('gulp-sass');
+const babel = require('gulp-babel');
 
 gulp.task('html', () => {
   return gulp
@@ -16,6 +17,11 @@ gulp.task('html', () => {
 gulp.task('js', () => {
   return gulp
     .src('stages/js/*.js')
+    .pipe(
+      babel({
+        presets: ['@babel/preset-env']
+      })
+    )
     .pipe(concat('main.js'))
     .pipe(gulp.dest('dist/js'));
 });
