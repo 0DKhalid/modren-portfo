@@ -2,7 +2,7 @@
 
 # to use and run:
 
-1.download gulp `npm install gulp@3.9.1 -g`
+1.download gulp `sudo npm install gulp@3.9.1 -g`
 
 2.clone this repo.
 

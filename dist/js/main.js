@@ -37,7 +37,46 @@
 
   document.querySelector('.menu-nav li.current').classList.remove('current'); //find and filter current page name
 
-  var page = window.location.href.match(/[^/]+$/)[0]; //find anchor tag with current href by use page name then set current class to his parent element (i)
+  var page;
 
-  document.querySelector(".menu-nav li a[href='".concat(page, "']")).parentElement.classList.add('current');
+  if (window.location.href.match(/[^/]+$/)) {
+    page = window.location.href.match(/[^/]+$/)[0];
+  } else {
+    page = 'index.html';
+  } //find anchor tag with current href by use page name then set current class to his parent element (i)
+
+
+  document.querySelector(".menu-nav li a[href='".concat(page, "']")).parentElement.classList.add('current'); //copy contact info by click
+
+  var emailEl = document.getElementById('email');
+  var phoneNumEl = document.getElementById('phone-number');
+  var overallTimer;
+
+  function copyContactInfo(event) {
+    if (overallTimer) {
+      clearTimeout(overallTimer);
+      overallTimer = 0;
+    }
+
+    var targetSpanName = event.target.childNodes[1].innerText;
+    var targetValue = event.target.childNodes[2].data.trim();
+
+    if (!navigator.clipboard) {
+      return alert('copy only available on modren browsers');
+    }
+
+    navigator.clipboard.writeText(targetValue).then(function () {
+      event.target.textContent = 'Copied!';
+      overallTimer = setTimeout(function () {
+        event.target.innerHTML = " <span class=\"text-secondary\">".concat(targetSpanName, "</span>").concat(targetValue);
+      }, 500);
+    })["catch"](function (err) {
+      console.log(err);
+    });
+  }
+
+  if (page === 'contact.html') {
+    emailEl.addEventListener('click', copyContactInfo);
+    phoneNumEl.addEventListener('click', copyContactInfo);
+  }
 })();

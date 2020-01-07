@@ -36,10 +36,46 @@
   document.querySelector('.menu-nav li.current').classList.remove('current');
 
   //find and filter current page name
-  const page = window.location.href.match(/[^/]+$/)[0];
-
+  let page;
+  if (window.location.href.match(/[^/]+$/)) {
+    page = window.location.href.match(/[^/]+$/)[0];
+  } else {
+    page = 'index.html';
+  }
   //find anchor tag with current href by use page name then set current class to his parent element (i)
   document
     .querySelector(`.menu-nav li a[href='${page}']`)
     .parentElement.classList.add('current');
+
+  //copy contact info by click
+  const emailEl = document.getElementById('email');
+  const phoneNumEl = document.getElementById('phone-number');
+  let overallTimer;
+  function copyContactInfo(event) {
+    if (overallTimer) {
+      clearTimeout(overallTimer);
+      overallTimer = 0;
+    }
+    const targetSpanName = event.target.childNodes[1].innerText;
+    const targetValue = event.target.childNodes[2].data.trim();
+    if (!navigator.clipboard) {
+      return alert('copy only available on modren browsers');
+    }
+
+    navigator.clipboard
+      .writeText(targetValue)
+      .then(() => {
+        event.target.textContent = 'Copied!';
+        overallTimer = setTimeout(() => {
+          event.target.innerHTML = ` <span class="text-secondary">${targetSpanName}</span>${targetValue}`;
+        }, 500);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
+  if (page === 'contact.html') {
+    emailEl.addEventListener('click', copyContactInfo);
+    phoneNumEl.addEventListener('click', copyContactInfo);
+  }
 })();
