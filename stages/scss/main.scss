@@ -72,9 +72,9 @@ main {
 .about-info {
   display: grid;
   grid-template-areas:
-    'bio bio'
-    'jop1 jop2';
-  grid-template-columns: repeat(2, 1fr);
+    'bio bio bio'
+    'jop1 jop2 jop3';
+  grid-template-columns: repeat(3, 1fr);
 
   // .bio-image {
   //   grid-area: bioimage;
@@ -92,9 +92,9 @@ main {
   .jop-2 {
     grid-area: jop2;
   }
-  // .jop-3 {
-  //   grid-area: jop3;
-  // }
+  .jop-3 {
+    grid-area: jop3;
+  }
 
   .jop {
     background: lighten($primary-color, 5);
