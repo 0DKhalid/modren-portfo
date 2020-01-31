@@ -10,6 +10,8 @@
 
 4.inside the project run `npm i`.
 
+5.Put Your resume pdf file on data folder
+
 5.run `gulp watch`.
 
 _Now you ready to go_ (:
