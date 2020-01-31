@@ -12,6 +12,6 @@
 
 5.Put Your resume pdf file on data folder
 
-5.run `gulp watch`.
+6.run `gulp watch`.
 
 _Now you ready to go_ (:
