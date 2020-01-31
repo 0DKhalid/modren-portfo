@@ -1,5 +1,3 @@
-const path = require('path');
-const fs = require('fs');
 const gulp = require('gulp');
 const concat = require('gulp-concat');
 const autoprefixer = require('gulp-autoprefixer');
@@ -11,25 +9,20 @@ const uglify = require('gulp-uglify');
 const hash = require('gulp-hash');
 const sourcemaps = require('gulp-sourcemaps');
 
+const { parseFileName } = require('./util/util');
+
 gulp.task('html', () => {
   return gulp
     .src('stages/ejs/*.ejs')
-    .pipe(ejs())
+    .pipe(ejs({ fileName: parseFileName() }))
     .pipe(rename({ extname: '.html' }))
     .pipe(gulp.dest('dist'));
 });
 
 gulp.task('change-script-name', () => {
-  //parse js file name for dynamic import in ejs template
-  const fileData = fs.readFileSync(
-    path.resolve(__dirname, 'public/assets.json')
-  );
-  const pasreData = JSON.parse(fileData);
-  const fileName = pasreData['main.js'];
-
   return gulp
     .src('stages/ejs/*.ejs')
-    .pipe(ejs({ fileName: fileName }))
+    .pipe(ejs({ fileName: parseFileName() }))
     .pipe(rename({ extname: '.html' }))
     .pipe(gulp.dest('dist'));
 });

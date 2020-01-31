@@ -59,7 +59,7 @@
     const targetSpanName = event.target.childNodes[1].innerText;
     const targetValue = event.target.childNodes[2].data.trim();
     if (!navigator.clipboard) {
-      return alert('copy only available on modren browsers');
+      return alert('copy only available on modren browsers!');
     }
 
     navigator.clipboard
@@ -98,8 +98,4 @@
       }
     });
   }
-
-  fetch('./assets.json')
-    .then(res => res.json())
-    .then(data => console.log(data));
 })();
