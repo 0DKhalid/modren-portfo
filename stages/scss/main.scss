@@ -1,5 +1,6 @@
 @import 'config';
 @import 'menu';
+@import 'dropdown';
 
 * {
   box-sizing: border-box;
@@ -47,7 +48,7 @@ header {
 main {
   padding: 4rem;
   // height: 100%;
-  min-height: unquote('-webkit-calc(100vh - 60px)');
+  min-height: calc(100vh - 60px);
 
   .icons {
     margin-top: 1rem;
@@ -67,14 +68,18 @@ main {
       margin-top: 20vh;
     }
   }
+  &#about {
+    padding: 2rem;
+    margin-bottom: 2rem;
+  }
 }
 
 .about-info {
   display: grid;
   grid-template-areas:
-    'bio bio bio'
-    'jop1 jop2 jop3';
-  grid-template-columns: repeat(3, 1fr);
+    'bio bio'
+    'jop1 jop2';
+  grid-template-columns: repeat(2, 1fr);
 
   // .bio-image {
   //   grid-area: bioimage;
@@ -92,9 +97,9 @@ main {
   .jop-2 {
     grid-area: jop2;
   }
-  .jop-3 {
-    grid-area: jop3;
-  }
+  // .jop-3 {
+  //   grid-area: jop3;
+  // }
 
   .jop {
     background: lighten($primary-color, 5);
@@ -102,6 +107,7 @@ main {
     padding: 0.5rem;
     border-bottom: $secondary-color solid 3px;
     p {
+      font-size: 1rem;
     }
   }
 }
@@ -176,6 +182,7 @@ main {
 }
 
 #main-footer {
+  position: sticky;
   text-align: center;
   padding: 1rem;
   background: darken($primary-color, 10);

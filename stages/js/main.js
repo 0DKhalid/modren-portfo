@@ -78,4 +78,28 @@
     emailEl.addEventListener('click', copyContactInfo);
     phoneNumEl.addEventListener('click', copyContactInfo);
   }
+
+  //resume functionliaty
+  //select dropdwon btn and drop down
+
+  const wrapperDropdown = document.getElementById('dd');
+  const dropdown = document.querySelector('.dropdown'); // toggle active class
+
+  function toggleDropdown() {
+    dropdown.classList.toggle('active');
+  }
+
+  if (page === 'about.html') {
+    wrapperDropdown.addEventListener('click', toggleDropdown); //remove class active add hidde dropdown when click on window obj
+
+    window.addEventListener('click', event => {
+      if (!wrapperDropdown.contains(event.target)) {
+        dropdown.classList.remove('active');
+      }
+    });
+  }
+
+  fetch('./assets.json')
+    .then(res => res.json())
+    .then(data => console.log(data));
 })();

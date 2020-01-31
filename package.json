@@ -9,15 +9,17 @@
     "gulp": "3.9.1",
     "gulp-autoprefixer": "^7.0.1",
     "gulp-babel": "^8.0.0",
+    "gulp-clean": "^0.4.0",
     "gulp-concat": "^2.6.1",
     "gulp-ejs": "^4.1.2",
-    "gulp-minify": "^3.1.0",
+    "gulp-hash": "^4.2.2",
     "gulp-rename": "^1.4.0",
     "gulp-sass": "^4.0.2",
     "gulp-uglify": "^3.0.2",
     "node-sass": "^4.12.0"
   },
   "dependencies": {
+    "gulp-sourcemaps": "^2.6.5",
     "readable-stream": "^3.4.0",
     "static-server": "^2.2.1"
   }
