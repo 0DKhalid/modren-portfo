@@ -3,8 +3,10 @@
 <body id="bg-img">
   <%- include('./static/nav') %>
   <main id="home">
-    <h1 class="heading-lg">Khalid <span class="text-secondary">Ayde</span></h1>
-    <h2 class="heading-sm">Full Stuck developer</h2>
+    <h1 class="heading-lg" data-ar="firstName">
+      Khalid <span class="text-secondary" data-ar="lastName">Ayde</span>
+    </h1>
+    <h2 class="heading-sm" data-ar="career">Full Stuck developer</h2>
     <div class="icons">
       <a href="https://twitter.com/khalidpqp">
         <i class="fab fa-twitter fa-2x"></i>
@@ -12,12 +14,12 @@
       <a href="https://github.com/0DKhalid">
         <i class="fab fa-github fa-2x"></i>
       </a>
-      <!-- <a href="#">
-                      <i class="fab fa-facebook-square fa-2x"></i>
-                    </a>
-                    <a href="#">
-                       <i class="fab fa-linkedin fa-2x"></i>
-                    </a> -->
+      <a href="#">
+        <i class="fab fa-facebook-square fa-2x"></i>
+      </a>
+      <a href="#">
+        <i class="fab fa-linkedin fa-2x"></i>
+      </a>
     </div>
   </main>
   <%- include('./static/end') %>

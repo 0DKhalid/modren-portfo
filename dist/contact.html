@@ -8,7 +8,11 @@
     , initial-scale=1.0"
     />
     <link rel="icon" href="/img/favicon.png" />
-    <script src="https://kit.fontawesome.com/<Your Kit>"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/js/all.min.js"
+      integrity="sha512-YSdqvJoZr83hj76AIVdOcvLWYMWzy6sJyIMic2aQz5kh2bPTd9dzY3NtdeEAzPp/PhgZqr4aJObB3ym/vsItMg=="
+      crossorigin="anonymous"
+    ></script>
     <link rel="stylesheet" href="css\main.css" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Khalid</title>
@@ -29,32 +33,54 @@
     </div>
     <ul class="menu-nav">
       <li class="nav-item current">
-        <a href="index.html" class="nav-link">Home</a>
+        <a href="index.html" class="nav-link" data-ar="home">Home</a>
       </li>
       <li class="nav-item">
-        <a href="about.html" class="nav-link">About Me</a>
+        <a href="about.html" class="nav-link" data-ar="aboutMe">About Me</a>
       </li>
       <li class="nav-item">
-        <a href="work.html" class="nav-link">My Work</a>
+        <a href="work.html" class="nav-link" data-ar="myWork">My Works</a>
       </li>
       <li class="nav-item">
-        <a href="contact.html" class="nav-link">How To Reach Me</a>
+        <a href="contact.html" class="nav-link" data-ar="contactMe"
+          >Contact Me</a
+        >
+      </li>
+      <li>
+        <div>
+          <div class="onoffswitch">
+            <input
+              type="checkbox"
+              name="onoffswitch"
+              class="onoffswitch-checkbox lang-switch"
+              id="myonoffswitch"
+            />
+            <label class="onoffswitch-label" for="myonoffswitch">
+              <span class="onoffswitch-inner"></span>
+              <span class="onoffswitch-switch"></span>
+            </label>
+          </div>
+        </div>
       </li>
     </ul>
   </nav>
 </header>
 
   <main id="contact">
-    <h1 class="heading-lg">Contact<span class="text-secondary"> Me</span></h1>
+    <h1 class="heading-lg" data-ar="contact">
+      Contact<span class="text-secondary" data-ar="meText"> Me</span>
+    </h1>
     <!-- <h2 class="heading-sm">rech </h2> -->
     <div class="boxes">
       <!-- email box -->
       <div id="email">
-        <span class="text-secondary">Email: </span> khalid@example.com
+        <span class="text-secondary" data-ar="email">Email: </span>
+        khalid@example.com
       </div>
       <!-- Phone box -->
       <div id="phone-number">
-        <span class="text-secondary">Phone: </span> +960000000000
+        <span class="text-secondary" data-ar="phone">Phone: </span>
+        +960000000000
       </div>
       <!-- Address box -->
       <!-- <div>
@@ -68,9 +94,8 @@
   <footer id="main-footer">
     Copyright &copy; Khalid Ayed
   </footer>
-    <!-- Make sure after update javascript file, copy new genrated file name and pasted down from dist -->
-    <script src="js/main-4995969a.js"></script>
-     
+  <script src="https://wzrd.in/standalone/copy-to-clipboard@latest" async></script>
+    <script src="js/main-4a9b1ceb.js"></script>
 </body>   
 </html>
           

@@ -8,7 +8,11 @@
     , initial-scale=1.0"
     />
     <link rel="icon" href="/img/favicon.png" />
-    <script src="https://kit.fontawesome.com/<Your Kit>"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/js/all.min.js"
+      integrity="sha512-YSdqvJoZr83hj76AIVdOcvLWYMWzy6sJyIMic2aQz5kh2bPTd9dzY3NtdeEAzPp/PhgZqr4aJObB3ym/vsItMg=="
+      crossorigin="anonymous"
+    ></script>
     <link rel="stylesheet" href="css\main.css" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Khalid</title>
@@ -30,24 +34,44 @@
     </div>
     <ul class="menu-nav">
       <li class="nav-item current">
-        <a href="index.html" class="nav-link">Home</a>
+        <a href="index.html" class="nav-link" data-ar="home">Home</a>
       </li>
       <li class="nav-item">
-        <a href="about.html" class="nav-link">About Me</a>
+        <a href="about.html" class="nav-link" data-ar="aboutMe">About Me</a>
       </li>
       <li class="nav-item">
-        <a href="work.html" class="nav-link">My Work</a>
+        <a href="work.html" class="nav-link" data-ar="myWork">My Works</a>
       </li>
       <li class="nav-item">
-        <a href="contact.html" class="nav-link">How To Reach Me</a>
+        <a href="contact.html" class="nav-link" data-ar="contactMe"
+          >Contact Me</a
+        >
+      </li>
+      <li>
+        <div>
+          <div class="onoffswitch">
+            <input
+              type="checkbox"
+              name="onoffswitch"
+              class="onoffswitch-checkbox lang-switch"
+              id="myonoffswitch"
+            />
+            <label class="onoffswitch-label" for="myonoffswitch">
+              <span class="onoffswitch-inner"></span>
+              <span class="onoffswitch-switch"></span>
+            </label>
+          </div>
+        </div>
       </li>
     </ul>
   </nav>
 </header>
 
   <main id="about">
-    <h1 class="heading-lg">About <span class="text-secondary">Me</span></h1>
-    <h2 class="heading-sm">
+    <h1 class="heading-lg" data-ar="about">
+      About <span data-ar="me" class="text-secondary">Me</span>
+    </h1>
+    <h2 class="heading-sm" data-ar="aboutSummary">
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam nisi eos
       reprehenderit id enim laboriosam, accusamus nihil, distinctio consequatur
       nesciunt error! Nihil velit quod accusantium qui magnam deserunt sapiente
@@ -66,9 +90,9 @@
             </p>
           </div> -->
       <div class="jop jop-1" data-aos="fade-left">
-        <h3>Example1</h3>
+        <h3 data-ar="frontSkillsTitle">Front-end Development Skills</h3>
         <!-- <h5>Languages and Technology</h5> -->
-        <p>
+        <p data-ar="frontSkillsDetial">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam nisi
           eos reprehenderit id enim laboriosam, accusamus nihil, distinctio
           consequatur nesciunt error! Nihil velit quod accusantium qui magnam
@@ -76,9 +100,9 @@
         </p>
       </div>
       <div class="jop jop-2" data-aos="fade-right">
-        <h3>Example2</h3>
+        <h3 data-ar="backSkillsTitle">Back-end Development Siklls</h3>
         <!-- <h5>Technology and Environment</h5> -->
-        <p>
+        <p data-ar="backSkillsDetial">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam nisi
           eos reprehenderit id enim laboriosam, accusamus nihil, distinctio
           consequatur nesciunt error! Nihil velit quod accusantium qui magnam
@@ -86,10 +110,10 @@
         </p>
       </div>
       <div class="jop jop-3" data-aos="fade-left">
-        <h3>Example3</h3>
+        <h3 data-ar="otherSkillsTitle">Other Siklls</h3>
 
         <!-- <h5>Lorem ipsum dolor sit.</h5> -->
-        <p>
+        <p data-ar="otherSkillsDetial">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam nisi
           eos reprehenderit id enim laboriosam, accusamus nihil, distinctio
           consequatur nesciunt error! Nihil velit quod accusantium qui magnam
@@ -97,16 +121,18 @@
         </p>
       </div>
     </div>
-    <div id="dd" class="wrapper-dropdown" tabindex="1">
-      <span>Resume</span>
+    <div id="dd" class="wrapper-dropdown" tabindex="1" dir="ltr">
+      <span data-ar="resume">Resume</span>
       <ul class="dropdown">
         <li>
-          <a href="./data/resume.pdf" download
+          <a href="./data/resume.pdf" download data-ar="download"
             ><i class="fas fa-file-download"></i>Download</a
           >
         </li>
         <li>
-          <a href="./data/resume.pdf"><i class="fas fa-eye"></i>View Online</a>
+          <a href="./data/resume.pdf" data-ar="view"
+            ><i class="fas fa-eye"></i>View Online</a
+          >
         </li>
       </ul>
     </div>
@@ -116,9 +142,8 @@
   <footer id="main-footer">
     Copyright &copy; Khalid Ayed
   </footer>
-    <!-- Make sure after update javascript file, copy new genrated file name and pasted down from dist -->
-    <script src="js/main-4995969a.js"></script>
-     
+  <script src="https://wzrd.in/standalone/copy-to-clipboard@latest" async></script>
+    <script src="js/main-4a9b1ceb.js"></script>
 </body>   
 </html>
           

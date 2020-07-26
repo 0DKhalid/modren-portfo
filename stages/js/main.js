@@ -1,4 +1,4 @@
-(function() {
+(function () {
   //Select dom
   const menuBtn = document.querySelector('.menu-btn');
   const menu = document.querySelector('.menu');
@@ -18,7 +18,7 @@
       menuBranding.classList.add('show');
       menu.classList.add('show');
 
-      navItems.forEach(item => item.classList.add('show'));
+      navItems.forEach((item) => item.classList.add('show'));
 
       showMenu = true;
     } else {
@@ -26,7 +26,7 @@
       menuNav.classList.remove('show');
       menuBranding.classList.remove('show');
       menu.classList.remove('show');
-      navItems.forEach(item => item.classList.remove('show'));
+      navItems.forEach((item) => item.classList.remove('show'));
       showMenu = false;
     }
   }
@@ -56,23 +56,21 @@
       clearTimeout(overallTimer);
       overallTimer = 0;
     }
+
     const targetSpanName = event.target.childNodes[1].innerText;
     const targetValue = event.target.childNodes[2].data.trim();
-    if (!navigator.clipboard) {
-      return alert('copy only available on modren browsers!');
-    }
 
-    navigator.clipboard
-      .writeText(targetValue)
-      .then(() => {
-        event.target.textContent = 'Copied!';
-        overallTimer = setTimeout(() => {
-          event.target.innerHTML = ` <span class="text-secondary">${targetSpanName}</span>${targetValue}`;
-        }, 500);
-      })
-      .catch(err => {
-        console.log(err);
-      });
+    const isCopy = window.copyToClipboard(targetValue);
+    if (!isCopy) {
+      alert('Copy Faild');
+    } else {
+      event.target.textContent = !localStorage.getItem('lang')
+        ? 'Copied!'
+        : 'تم النسخ!';
+      setTimeout(() => {
+        event.target.innerHTML = ` <span class="text-secondary">${targetSpanName}</span> ${targetValue}`;
+      }, 500);
+    }
   }
   if (page === 'contact.html') {
     emailEl.addEventListener('click', copyContactInfo);
@@ -92,10 +90,58 @@
   if (page === 'about.html') {
     wrapperDropdown.addEventListener('click', toggleDropdown); //remove class active add hidde dropdown when click on window obj
 
-    window.addEventListener('click', event => {
+    window.addEventListener('click', (event) => {
       if (!wrapperDropdown.contains(event.target)) {
         dropdown.classList.remove('active');
       }
     });
+  }
+})();
+
+(function () {
+  //translation to arabic
+  const langSwitch = document.querySelector('.lang-switch');
+  const isArMode = localStorage.getItem('lang');
+
+  if (isArMode) {
+    langSwitch.checked = true;
+    translateToAr();
+  }
+
+  langSwitch.addEventListener('change', translateToAr);
+
+  function translateToAr() {
+    if (langSwitch.checked) {
+      localStorage.setItem('lang', 'ar');
+      fetch('../data/ar.json')
+        .then((res) => res.json())
+        .then((arData) => {
+          const dataAtrrSelectors = Object.keys(arData);
+          for (let key of dataAtrrSelectors) {
+            const ele = document.querySelector(`[data-ar='${key}']`);
+            if (ele) {
+              ele.childNodes[0].textContent = `  ${arData[key]}`;
+            } else {
+              continue;
+            }
+          }
+          changePageDir();
+        })
+        .catch(console.log);
+    } else {
+      localStorage.removeItem('lang');
+      setTimeout(() => {
+        window.location.reload();
+      }, 260);
+    }
+  }
+
+  function changePageDir() {
+    const eleId =
+      window.location.href.match(/[^/]+$/)[0].split('.')[0] === 'index'
+        ? 'home'
+        : window.location.href.match(/[^/]+$/)[0].split('.')[0];
+
+    document.getElementById(eleId).dir = 'rtl';
   }
 })();
