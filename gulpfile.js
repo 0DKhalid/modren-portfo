@@ -8,6 +8,7 @@ const babel = require('gulp-babel');
 const uglify = require('gulp-uglify');
 const hash = require('gulp-hash');
 const sourcemaps = require('gulp-sourcemaps');
+const imagemin = require('gulp-imagemin');
 
 const { parseFileName } = require('./util/util');
 
@@ -59,10 +60,15 @@ gulp.task('css', () => {
     .pipe(gulp.dest('dist/css'));
 });
 
+gulp.task('minify-images', () => {
+  gulp.src('stages/assets/img/*').pipe(imagemin()).pipe(gulp.dest('dist/img'));
+});
+
 gulp.task('watch', () => {
   require('./server');
   gulp.watch('stages/ejs/**/*.ejs', ['html']);
   gulp.watch('stages/js/*.js', ['js']);
   gulp.watch('stages/scss/*.scss', ['css']);
   gulp.watch('public/assets.json', ['change-script-name']);
+  gulp.watch('stages/assets/img/*', ['minify-images']);
 });
