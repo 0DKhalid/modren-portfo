@@ -25,8 +25,6 @@
 
 4. Put Your resume pdf file on the data folder
 
-5. run `gulp watch`.
-
 _Now you ready to go_ (:
 
 > This Template Support Arabic Language You Can Change Default Text By Go To `dist/data/ar.json`
