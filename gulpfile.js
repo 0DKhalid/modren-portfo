@@ -12,25 +12,34 @@ const imagemin = require('gulp-imagemin');
 
 const { parseFileName } = require('./util/util');
 
-gulp.task('html', () => {
-  return gulp
-    .src('stages/ejs/*.ejs')
+const ejsPath = 'stages/ejs/**/*.ejs';
+const scriptFileName = 'public/assets.json';
+const jsPath = 'stages/js/*.js';
+const scssPath = 'stages/scss/*.scss';
+const scssMainPath = 'stages/scss/main.scss';
+const imgPath = 'stages/assets/img/*';
+
+function ejsTask(done) {
+  gulp
+    .src(ejsPath)
     .pipe(ejs({ fileName: parseFileName() }))
     .pipe(rename({ extname: '.html' }))
     .pipe(gulp.dest('dist'));
-});
+  done();
+}
 
-gulp.task('change-script-name', () => {
-  return gulp
-    .src('stages/ejs/*.ejs')
+function changeScriptName(done) {
+  gulp
+    .src(ejsPath)
     .pipe(ejs({ fileName: parseFileName() }))
     .pipe(rename({ extname: '.html' }))
     .pipe(gulp.dest('dist'));
-});
+  done();
+}
 
-gulp.task('js', () => {
-  return gulp
-    .src('stages/js/*.js')
+function jsTask(done) {
+  gulp
+    .src(jsPath)
     .pipe(sourcemaps.init())
     .pipe(
       babel({
@@ -49,26 +58,33 @@ gulp.task('js', () => {
       })
     )
     .pipe(gulp.dest('.'));
-});
+  done();
+}
 
-gulp.task('css', () => {
-  return gulp
-    .src('stages/scss/main.scss')
+function cssTask(done) {
+  gulp
+    .src(scssMainPath)
     .pipe(sass({ outputStyle: 'compressed' }))
     .pipe(autoprefixer('last 2 version'))
     .pipe(concat('main.css'))
     .pipe(gulp.dest('dist/css'));
-});
+  done();
+}
 
-gulp.task('minify-images', () => {
-  gulp.src('stages/assets/img/*').pipe(imagemin()).pipe(gulp.dest('dist/img'));
-});
+function imgTask(done) {
+  gulp.src(imgPath).pipe(imagemin()).pipe(gulp.dest('dist/img'));
+  done();
+}
 
-gulp.task('watch', () => {
+function watchFiles() {
   require('./server');
-  gulp.watch('stages/ejs/**/*.ejs', ['html']);
-  gulp.watch('stages/js/*.js', ['js']);
-  gulp.watch('stages/scss/*.scss', ['css']);
-  gulp.watch('public/assets.json', ['change-script-name']);
-  gulp.watch('stages/assets/img/*', ['minify-images']);
-});
+  gulp.watch(ejsPath, ejsTask);
+  gulp.watch(jsPath, jsTask);
+  gulp.watch(scssPath, cssTask);
+  gulp.watch(scriptFileName, changeScriptName);
+  gulp.watch(imgPath, imgTask);
+}
+
+gulp.task('watch', watchFiles);
+
+exports.default = gulp.parallel(watchFiles);

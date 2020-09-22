@@ -8,25 +8,24 @@
 
 1. make sure you install nodejs
 
-2. download gulp `sudo npm install gulp@3.9.1 -g`
+2. clone this repo.
 
-3. clone this repo.
+3. Navigate to the project on terminal or cmd.
 
-4. Navigate to the project on terminal or cmd.
-
-- if you use npm run
+- run
   ```
   npm i
-  npm run preinstall
+  npm run watch
   ```
-- if you use yarn just run
+- or
   ```
   yarn install
+  yarn watch
   ```
 
-5. Put Your resume pdf file on the data folder
+4. Put Your resume pdf file on the data folder
 
-6. run `gulp watch`.
+5. run `gulp watch`.
 
 _Now you ready to go_ (:
 
