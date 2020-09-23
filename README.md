@@ -23,8 +23,14 @@
   yarn watch
   ```
 
-4. Put Your resume pdf file on the data folder
+4. build dist folder by run
+
+- ```
+  npm run build
+  ```
+
+5. Replace ` satges/data/resume.pdf` file with your resume file
 
 _Now you ready to go_ (:
 
-> This Template Support Arabic Language You Can Change Default Text By Go To `dist/data/ar.json`
+> This Template Support Arabic Language You Can Change Default Text By Go To `stages/data/ar.json`

@@ -18,6 +18,7 @@ const jsPath = 'stages/js/*.js';
 const scssPath = 'stages/scss/*.scss';
 const scssMainPath = 'stages/scss/main.scss';
 const imgPath = 'stages/assets/img/*';
+const dataPath = 'stages/data/*';
 
 function ejsTask(done) {
   gulp
@@ -58,6 +59,7 @@ function jsTask(done) {
       })
     )
     .pipe(gulp.dest('.'));
+  console.log(done);
   done();
 }
 
@@ -68,6 +70,11 @@ function cssTask(done) {
     .pipe(autoprefixer('last 2 version'))
     .pipe(concat('main.css'))
     .pipe(gulp.dest('dist/css'));
+  done();
+}
+
+function dataTask(done) {
+  gulp.src(dataPath).pipe(gulp.dest('dist/data'));
   done();
 }
 
@@ -83,8 +90,9 @@ function watchFiles() {
   gulp.watch(scssPath, cssTask);
   gulp.watch(scriptFileName, changeScriptName);
   gulp.watch(imgPath, imgTask);
+  gulp.watch(dataPath, dataTask);
 }
 
-gulp.task('watch', watchFiles);
+exports.build = gulp.series(ejsTask, cssTask, jsTask, imgTask, dataTask);
 
-exports.default = gulp.parallel(watchFiles);
+exports.default = watchFiles;
