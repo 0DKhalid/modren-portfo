@@ -13,23 +13,21 @@
 3. Navigate to the project on terminal or cmd.
 
 - run
+
   ```
   npm i
+  npm run build
   npm run watch
   ```
+
 - or
   ```
   yarn install
+  yarn build
   yarn watch
   ```
 
-4. build dist folder by run
-
-- ```
-  npm run build
-  ```
-
-5. Replace ` satges/data/resume.pdf` file with your resume file
+4. Replace ` satges/data/resume.pdf` file with your resume file
 
 _Now you ready to go_ (:
 

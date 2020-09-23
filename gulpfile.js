@@ -59,7 +59,6 @@ function jsTask(done) {
       })
     )
     .pipe(gulp.dest('.'));
-  console.log(done);
   done();
 }
 
