@@ -4,13 +4,13 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "build": "gulp build",
-    "watch": "gulp"
+    "build": "export NODE_ENV=production && rm -rf ./dist && gulp js &&  gulp build",
+    "watch": "export NODE_ENV=development && rm -rf ./dist && rm -rf ./public && gulp js && gulp build && gulp"
   },
   "devDependencies": {
     "@babel/core": "^7.6.4",
     "@babel/preset-env": "^7.6.3",
-    "gifsicle": "^5.1.0",
+    "browser-sync": "^2.26.12",
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "^7.0.1",
     "gulp-babel": "^8.0.0",

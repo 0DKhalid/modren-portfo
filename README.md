@@ -12,19 +12,17 @@
 
 3. Navigate to the project on terminal or cmd.
 
-- run
+- for development run
 
   ```
   npm i
-  npm run build
   npm run watch
   ```
 
-- or
+- for build to production production run
   ```
-  yarn install
-  yarn build
-  yarn watch
+  npm i
+  npm run build
   ```
 
 4. Replace ` satges/data/resume.pdf` file with your resume file

@@ -113,7 +113,7 @@
   function translateToAr() {
     if (langSwitch.checked) {
       localStorage.setItem('lang', 'ar');
-      fetch('../data/ar.json')
+      fetch('./data/ar.json')
         .then((res) => res.json())
         .then((arData) => {
           const dataAtrrSelectors = Object.keys(arData);
