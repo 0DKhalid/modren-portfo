@@ -19,7 +19,7 @@
   npm run watch
   ```
 
-- for build to production production run
+- for build to production run
   ```
   npm i
   npm run build
